@@ -188,17 +188,41 @@ export default function HomePage() {
         <p className={styles.liveStreamDescription}>
           Watch coral reef ecosystems in real-time from underwater cameras around the world
         </p>
-        <div className={styles.videoWrapper}>
-          <iframe
-            src="https://www.youtube.com/embed/THnF0IQ8JJM?autoplay=0&rel=0"
-            title="Live Coral Reef Camera"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-        <div className={styles.liveStreamInfo}>
-          <span className={styles.liveBadge}>LIVE</span>
-          <span>Coral Reef Webcam - Underwater Ocean View</span>
+        <div className={styles.monitorFrame}>
+          <div className={styles.monitorHeader}>
+            <div className={styles.monitorHeaderLeft}>
+              <span className={styles.liveDot}></span>
+              <span className={styles.liveText}>LIVE</span>
+              <span className={styles.cameraId}>CAM-01</span>
+            </div>
+            <div className={styles.monitorHeaderRight}>
+              <span>CORAL REEF MONITORING STATION</span>
+            </div>
+          </div>
+          <div className={styles.videoWrapper}>
+            <iframe
+              src="https://www.youtube.com/embed/THnF0IQ8JJM?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&loop=1&playlist=THnF0IQ8JJM"
+              title="Live Coral Reef Camera"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+            <div className={styles.videoOverlay}>
+              <div className={styles.overlayCorner + ' ' + styles.topLeft}></div>
+              <div className={styles.overlayCorner + ' ' + styles.topRight}></div>
+              <div className={styles.overlayCorner + ' ' + styles.bottomLeft}></div>
+              <div className={styles.overlayCorner + ' ' + styles.bottomRight}></div>
+            </div>
+          </div>
+          <div className={styles.monitorFooter}>
+            <div className={styles.monitorStats}>
+              <span>DEPTH: 12m</span>
+              <span>TEMP: 26°C</span>
+              <span>VISIBILITY: GOOD</span>
+            </div>
+            <div className={styles.monitorLocation}>
+              <span>Great Barrier Reef, Australia</span>
+            </div>
+          </div>
         </div>
       </section>
 
