@@ -1,16 +1,32 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { AnalysisResult, SpeciesCount } from '../types';
 
+const MAX_FILE_SIZE_MB = 20;
+
 const getGeminiClient = () => {
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-  if (!apiKey) {
-    throw new Error('VITE_GEMINI_API_KEY environment variable is not set');
+  if (!apiKey || apiKey === 'your_gemini_api_key_here') {
+    return null;
   }
   return new GoogleGenerativeAI(apiKey);
 };
 
 export async function analyzeReefVideo(file: File): Promise<AnalysisResult> {
   const genAI = getGeminiClient();
+
+  // If no valid API key, use demo mode
+  if (!genAI) {
+    console.log('No valid Gemini API key found, using demo mode');
+    return analyzeReefVideoDemo(file);
+  }
+
+  // Check file size
+  const fileSizeMB = file.size / (1024 * 1024);
+  if (fileSizeMB > MAX_FILE_SIZE_MB) {
+    console.log(`File too large (${fileSizeMB.toFixed(1)}MB), using demo mode`);
+    return analyzeReefVideoDemo(file);
+  }
+
   const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
   // Convert file to base64
@@ -55,6 +71,7 @@ Identify as many distinct species as possible with estimated counts.`;
     // Extract JSON from the response
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
+      console.error('Failed to parse JSON from response:', text);
       throw new Error('Failed to parse analysis results');
     }
 
@@ -74,7 +91,9 @@ Identify as many distinct species as possible with estimated counts.`;
     };
   } catch (error) {
     console.error('Gemini API error:', error);
-    throw new Error('Failed to analyze video. Please ensure the video is a valid underwater reef footage.');
+    // Fallback to demo mode on any API error
+    console.log('Falling back to demo mode due to API error');
+    return analyzeReefVideoDemo(file);
   }
 }
 

@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { analyzeReefVideo, analyzeReefVideoDemo } from '../services/geminiService';
+import { analyzeReefVideo } from '../services/geminiService';
 import type { AnalysisResult } from '../types';
 import styles from './VideoUpload.module.css';
 
@@ -86,11 +86,8 @@ export default function VideoUpload({ onAnalysisComplete }: VideoUploadProps) {
     }, 500);
 
     try {
-      // Check if we have an API key, use demo mode if not
-      const hasApiKey = import.meta.env.VITE_GEMINI_API_KEY;
-      const result = hasApiKey
-        ? await analyzeReefVideo(file)
-        : await analyzeReefVideoDemo(file);
+      // analyzeReefVideo handles API key check and falls back to demo mode automatically
+      const result = await analyzeReefVideo(file);
 
       setProgress(100);
       clearInterval(progressInterval);
