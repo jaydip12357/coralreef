@@ -1,0 +1,369 @@
+.page {
+  flex: 1;
+  background-color: var(--gray-50);
+  padding: 2rem 1.5rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.uploadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--accent-teal);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.uploadBtn:hover {
+  background-color: var(--accent-teal-dark);
+  color: white;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.statIcon {
+  font-size: 2rem;
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--duke-blue);
+}
+
+.statLabel {
+  font-size: 0.8125rem;
+  color: var(--gray-500);
+}
+
+.healthOverview {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.healthOverview h2 {
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
+}
+
+.healthBars {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.healthBar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.healthBarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.healthStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.healthCount {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+.barContainer {
+  width: 100%;
+  height: 8px;
+  background-color: var(--gray-200);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.uploadsSection,
+.alertsSection {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.uploadsSection h2,
+.alertsSection h2 {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.uploadsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.uploadCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--gray-50);
+  border-radius: 8px;
+}
+
+.uploadIcon {
+  font-size: 1.25rem;
+}
+
+.uploadInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.uploadFilename {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-800);
+}
+
+.uploadLocation {
+  font-size: 0.8125rem;
+  color: var(--gray-500);
+}
+
+.uploadTime {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+}
+
+.uploadScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scoreValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.scoreLabel {
+  font-size: 0.6875rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+}
+
+.alertsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.alertCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--gray-50);
+  border-radius: 8px;
+  border-left: 3px solid;
+}
+
+.alertIcon {
+  font-size: 1.125rem;
+}
+
+.alertContent {
+  flex: 1;
+}
+
+.alertMessage {
+  font-size: 0.875rem;
+  color: var(--gray-800);
+  margin-bottom: 0.25rem;
+}
+
+.alertMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--gray-500);
+}
+
+.reefList {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.reefList h2 {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.reefTable {
+  overflow-x: auto;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--gray-50);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--gray-100);
+  font-size: 0.9375rem;
+  align-items: center;
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow:hover {
+  background-color: var(--gray-50);
+}
+
+.reefName {
+  font-weight: 500;
+  color: var(--gray-800);
+}
+
+.reefRegion {
+  color: var(--gray-600);
+}
+
+.scoreBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 28px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+}
+
+.reefTrend {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.reefDate {
+  color: var(--gray-500);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mainContent {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .tableHeader,
+  .tableRow {
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+
+  .tableHeader span:nth-child(4),
+  .tableHeader span:nth-child(5),
+  .tableRow span:nth-child(4),
+  .tableRow span:nth-child(5) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
