@@ -1,11 +1,11 @@
-import VideoUpload from '../components/VideoUpload';
+import MediaUpload from '../components/MediaUpload';
 import styles from './UploadPage.module.css';
 
 export default function UploadPage() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <VideoUpload />
+        <MediaUpload />
       </div>
     </div>
   );

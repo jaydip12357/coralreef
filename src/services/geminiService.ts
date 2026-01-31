@@ -1,39 +1,46 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { AnalysisResult, SpeciesCount } from '../types';
 
-const MAX_FILE_SIZE_MB = 20;
+const MAX_IMAGE_SIZE_MB = 20;
+const MAX_VIDEO_SIZE_MB = 20;
 
 const getGeminiClient = () => {
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-  if (!apiKey || apiKey === 'your_gemini_api_key_here') {
+  if (!apiKey || apiKey === 'your_gemini_api_key_here' || apiKey.trim() === '') {
     return null;
   }
   return new GoogleGenerativeAI(apiKey);
 };
 
-export async function analyzeReefVideo(file: File): Promise<AnalysisResult> {
+export async function analyzeReefMedia(
+  file: File,
+  mediaType: 'image' | 'video'
+): Promise<AnalysisResult> {
   const genAI = getGeminiClient();
 
   // If no valid API key, use demo mode
   if (!genAI) {
     console.log('No valid Gemini API key found, using demo mode');
-    return analyzeReefVideoDemo(file);
+    return analyzeReefMediaDemo(file);
   }
 
   // Check file size
   const fileSizeMB = file.size / (1024 * 1024);
-  if (fileSizeMB > MAX_FILE_SIZE_MB) {
+  const maxSize = mediaType === 'image' ? MAX_IMAGE_SIZE_MB : MAX_VIDEO_SIZE_MB;
+
+  if (fileSizeMB > maxSize) {
     console.log(`File too large (${fileSizeMB.toFixed(1)}MB), using demo mode`);
-    return analyzeReefVideoDemo(file);
+    return analyzeReefMediaDemo(file);
   }
 
-  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+  try {
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
-  // Convert file to base64
-  const base64Data = await fileToBase64(file);
-  const mimeType = file.type || 'video/mp4';
+    // Convert file to base64
+    const base64Data = await fileToBase64(file);
+    const mimeType = file.type || (mediaType === 'image' ? 'image/jpeg' : 'video/mp4');
 
-  const prompt = `Analyze this underwater coral reef video and provide a detailed assessment. Please respond in the following JSON format only, no additional text:
+    const prompt = `Analyze this underwater coral reef ${mediaType} and provide a detailed assessment. Please respond in the following JSON format only, no additional text:
 
 {
   "healthScore": <number 0-100 indicating overall reef health>,
@@ -54,7 +61,6 @@ Consider the following factors:
 
 Identify as many distinct species as possible with estimated counts.`;
 
-  try {
     const result = await model.generateContent([
       {
         inlineData: {
@@ -72,29 +78,33 @@ Identify as many distinct species as possible with estimated counts.`;
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
       console.error('Failed to parse JSON from response:', text);
-      throw new Error('Failed to parse analysis results');
+      return analyzeReefMediaDemo(file);
     }
 
     const analysisData = JSON.parse(jsonMatch[0]);
 
     return {
-      healthScore: Math.min(100, Math.max(0, analysisData.healthScore)),
-      biodiversityScore: Math.min(100, Math.max(0, analysisData.biodiversityScore)),
+      healthScore: Math.min(100, Math.max(0, analysisData.healthScore || 65)),
+      biodiversityScore: Math.min(100, Math.max(0, analysisData.biodiversityScore || 60)),
       trend: analysisData.trend || 'stable',
       summary: analysisData.summary || 'Analysis complete.',
       species: (analysisData.species || []).map((s: SpeciesCount) => ({
         name: s.name,
-        count: Math.max(0, s.count),
+        count: Math.max(0, s.count || 1),
         category: s.category || 'fish',
       })),
       timestamp: new Date().toISOString(),
     };
   } catch (error) {
     console.error('Gemini API error:', error);
-    // Fallback to demo mode on any API error
     console.log('Falling back to demo mode due to API error');
-    return analyzeReefVideoDemo(file);
+    return analyzeReefMediaDemo(file);
   }
+}
+
+// Legacy function for backward compatibility
+export async function analyzeReefVideo(file: File): Promise<AnalysisResult> {
+  return analyzeReefMedia(file, 'video');
 }
 
 function fileToBase64(file: File): Promise<string> {
@@ -103,7 +113,6 @@ function fileToBase64(file: File): Promise<string> {
     reader.readAsDataURL(file);
     reader.onload = () => {
       const result = reader.result as string;
-      // Remove data URL prefix to get pure base64
       const base64 = result.split(',')[1];
       resolve(base64);
     };
@@ -111,10 +120,9 @@ function fileToBase64(file: File): Promise<string> {
   });
 }
 
-// Demo mode - returns mock analysis when no API key is available
-export async function analyzeReefVideoDemo(_file: File): Promise<AnalysisResult> {
-  // Simulate processing time
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+// Demo mode - returns mock analysis
+export async function analyzeReefMediaDemo(_file: File): Promise<AnalysisResult> {
+  await new Promise((resolve) => setTimeout(resolve, 2500));
 
   const fishSpecies = [
     'Clownfish', 'Blue Tang', 'Parrotfish', 'Butterflyfish', 'Angelfish',
@@ -132,10 +140,8 @@ export async function analyzeReefVideoDemo(_file: File): Promise<AnalysisResult>
     'Giant Clam', 'Nudibranch', 'Octopus'
   ];
 
-  // Generate random species counts
   const species: SpeciesCount[] = [];
 
-  // Add 4-6 fish species
   const numFish = 4 + Math.floor(Math.random() * 3);
   const shuffledFish = [...fishSpecies].sort(() => Math.random() - 0.5);
   for (let i = 0; i < numFish; i++) {
@@ -146,7 +152,6 @@ export async function analyzeReefVideoDemo(_file: File): Promise<AnalysisResult>
     });
   }
 
-  // Add 2-3 coral types
   const numCoral = 2 + Math.floor(Math.random() * 2);
   const shuffledCoral = [...coralTypes].sort(() => Math.random() - 0.5);
   for (let i = 0; i < numCoral; i++) {
@@ -157,7 +162,6 @@ export async function analyzeReefVideoDemo(_file: File): Promise<AnalysisResult>
     });
   }
 
-  // Add 1-2 invertebrates
   const numInvert = 1 + Math.floor(Math.random() * 2);
   const shuffledInvert = [...invertebrates].sort(() => Math.random() - 0.5);
   for (let i = 0; i < numInvert; i++) {
