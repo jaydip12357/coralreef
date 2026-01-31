@@ -183,13 +183,32 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className={styles.liveStream}>
+        <h2>Live Reef Camera</h2>
+        <p className={styles.liveStreamDescription}>
+          Watch coral reef ecosystems in real-time from underwater cameras around the world
+        </p>
+        <div className={styles.videoWrapper}>
+          <iframe
+            src="https://www.youtube.com/embed/THnF0IQ8JJM?autoplay=0&rel=0"
+            title="Live Coral Reef Camera"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+        <div className={styles.liveStreamInfo}>
+          <span className={styles.liveBadge}>LIVE</span>
+          <span>Coral Reef Webcam - Underwater Ocean View</span>
+        </div>
+      </section>
+
       <section className={styles.futureFeatures}>
         <h2>Coming Soon</h2>
         <div className={styles.futureGrid}>
           <div className={styles.futureCard}>
             <span className={styles.futureBadge}>Future</span>
-            <h3>Live Camera Feeds</h3>
-            <p>Real-time monitoring from underwater cameras deployed at key reef sites.</p>
+            <h3>Multi-Camera Network</h3>
+            <p>Access live feeds from multiple reef locations worldwide.</p>
           </div>
           <div className={styles.futureCard}>
             <span className={styles.futureBadge}>Future</span>
