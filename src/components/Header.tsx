@@ -47,17 +47,35 @@ export default function Header() {
           >
             Map
           </Link>
-          <Link
-            to="/upload"
-            className={`${styles.navLink} ${isActive('/upload') ? styles.active : ''}`}
+          <a
+            href="/#live-feeds"
+            className={styles.navLink}
           >
-            Upload
+            Live Feed
+          </a>
+          <Link
+            to="/historical"
+            className={`${styles.navLink} ${isActive('/historical') ? styles.active : ''}`}
+          >
+            Historical
+          </Link>
+          <Link
+            to="/alerts"
+            className={`${styles.navLink} ${isActive('/alerts') ? styles.active : ''}`}
+          >
+            Alerts
           </Link>
           <Link
             to="/dashboard"
             className={`${styles.navLink} ${isActive('/dashboard') ? styles.active : ''}`}
           >
             Dashboard
+          </Link>
+          <Link
+            to="/upload"
+            className={`${styles.navLink} ${isActive('/upload') ? styles.active : ''}`}
+          >
+            Upload
           </Link>
         </nav>
 

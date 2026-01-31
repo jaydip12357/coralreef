@@ -183,44 +183,211 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.liveStream}>
-        <h2>Live Reef Camera</h2>
+      <section id="live-feeds" className={styles.liveStream}>
+        <h2>Live Reef Cameras</h2>
         <p className={styles.liveStreamDescription}>
-          Watch coral reef ecosystems in real-time from underwater cameras around the world
+          Real-time monitoring feeds from underwater cameras at coral reef sites worldwide
         </p>
-        <div className={styles.monitorFrame}>
-          <div className={styles.monitorHeader}>
-            <div className={styles.monitorHeaderLeft}>
-              <span className={styles.liveDot}></span>
-              <span className={styles.liveText}>LIVE</span>
-              <span className={styles.cameraId}>CAM-01</span>
+
+        <div className={styles.cameraGrid}>
+          {/* Camera 1 - Great Barrier Reef */}
+          <div className={styles.cameraCard}>
+            <div className={styles.monitorFrame}>
+              <div className={styles.monitorHeader}>
+                <div className={styles.monitorHeaderLeft}>
+                  <span className={styles.liveDot}></span>
+                  <span className={styles.liveText}>LIVE</span>
+                  <span className={styles.cameraId}>CAM-01</span>
+                </div>
+                <div className={styles.monitorHeaderRight}>
+                  <span>STAGHORN CORAL STATION</span>
+                </div>
+              </div>
+              <div className={styles.videoWrapper}>
+                <iframe
+                  src="https://www.youtube.com/embed/THnF0IQ8JJM?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&loop=1&playlist=THnF0IQ8JJM"
+                  title="Staghorn Coral Live Feed"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+                <div className={styles.videoOverlay}>
+                  <div className={styles.overlayCorner + ' ' + styles.topLeft}></div>
+                  <div className={styles.overlayCorner + ' ' + styles.topRight}></div>
+                  <div className={styles.overlayCorner + ' ' + styles.bottomLeft}></div>
+                  <div className={styles.overlayCorner + ' ' + styles.bottomRight}></div>
+                </div>
+              </div>
+              <div className={styles.monitorFooter}>
+                <div className={styles.monitorStats}>
+                  <span>DEPTH: 12m</span>
+                  <span>TEMP: 26.2°C</span>
+                </div>
+                <div className={styles.monitorLocation}>
+                  <span>Great Barrier Reef, Australia</span>
+                </div>
+              </div>
             </div>
-            <div className={styles.monitorHeaderRight}>
-              <span>CORAL REEF MONITORING STATION</span>
+            <div className={styles.healthPanel}>
+              <div className={styles.healthHeader}>
+                <h3>Staghorn Coral (Acropora)</h3>
+                <span className={styles.healthBadge + ' ' + styles.healthy}>Healthy</span>
+              </div>
+              <div className={styles.healthStats}>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Health Score</span>
+                  <span className={styles.healthValue} style={{ color: '#22c55e' }}>78</span>
+                </div>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Population</span>
+                  <span className={styles.healthValue}>2,450</span>
+                </div>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Growth Rate</span>
+                  <span className={styles.healthValue}>+3.2%</span>
+                </div>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Fish Activity</span>
+                  <span className={styles.healthValue}>High</span>
+                </div>
+              </div>
+              <div className={styles.healthTrend}>
+                <span>24h Trend: </span>
+                <span style={{ color: '#22c55e' }}>↑ Stable conditions</span>
+              </div>
             </div>
           </div>
-          <div className={styles.videoWrapper}>
-            <iframe
-              src="https://www.youtube.com/embed/THnF0IQ8JJM?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&loop=1&playlist=THnF0IQ8JJM"
-              title="Live Coral Reef Camera"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-            <div className={styles.videoOverlay}>
-              <div className={styles.overlayCorner + ' ' + styles.topLeft}></div>
-              <div className={styles.overlayCorner + ' ' + styles.topRight}></div>
-              <div className={styles.overlayCorner + ' ' + styles.bottomLeft}></div>
-              <div className={styles.overlayCorner + ' ' + styles.bottomRight}></div>
+
+          {/* Camera 2 - Brain Coral */}
+          <div className={styles.cameraCard}>
+            <div className={styles.monitorFrame}>
+              <div className={styles.monitorHeader}>
+                <div className={styles.monitorHeaderLeft}>
+                  <span className={styles.liveDot}></span>
+                  <span className={styles.liveText}>LIVE</span>
+                  <span className={styles.cameraId}>CAM-02</span>
+                </div>
+                <div className={styles.monitorHeaderRight}>
+                  <span>BRAIN CORAL STATION</span>
+                </div>
+              </div>
+              <div className={styles.videoWrapper}>
+                <iframe
+                  src="https://www.youtube.com/embed/be6Xumfge1M?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&loop=1&playlist=be6Xumfge1M"
+                  title="Brain Coral Live Feed"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+                <div className={styles.videoOverlay}>
+                  <div className={styles.overlayCorner + ' ' + styles.topLeft}></div>
+                  <div className={styles.overlayCorner + ' ' + styles.topRight}></div>
+                  <div className={styles.overlayCorner + ' ' + styles.bottomLeft}></div>
+                  <div className={styles.overlayCorner + ' ' + styles.bottomRight}></div>
+                </div>
+              </div>
+              <div className={styles.monitorFooter}>
+                <div className={styles.monitorStats}>
+                  <span>DEPTH: 8m</span>
+                  <span>TEMP: 27.1°C</span>
+                </div>
+                <div className={styles.monitorLocation}>
+                  <span>Caribbean Sea, Belize</span>
+                </div>
+              </div>
+            </div>
+            <div className={styles.healthPanel}>
+              <div className={styles.healthHeader}>
+                <h3>Brain Coral (Diploria)</h3>
+                <span className={styles.healthBadge + ' ' + styles.warning}>At Risk</span>
+              </div>
+              <div className={styles.healthStats}>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Health Score</span>
+                  <span className={styles.healthValue} style={{ color: '#eab308' }}>62</span>
+                </div>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Population</span>
+                  <span className={styles.healthValue}>890</span>
+                </div>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Growth Rate</span>
+                  <span className={styles.healthValue}>-0.8%</span>
+                </div>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Fish Activity</span>
+                  <span className={styles.healthValue}>Medium</span>
+                </div>
+              </div>
+              <div className={styles.healthTrend}>
+                <span>24h Trend: </span>
+                <span style={{ color: '#eab308' }}>→ Elevated water temp</span>
+              </div>
             </div>
           </div>
-          <div className={styles.monitorFooter}>
-            <div className={styles.monitorStats}>
-              <span>DEPTH: 12m</span>
-              <span>TEMP: 26°C</span>
-              <span>VISIBILITY: GOOD</span>
+
+          {/* Camera 3 - Elkhorn Coral */}
+          <div className={styles.cameraCard}>
+            <div className={styles.monitorFrame}>
+              <div className={styles.monitorHeader}>
+                <div className={styles.monitorHeaderLeft}>
+                  <span className={styles.liveDot}></span>
+                  <span className={styles.liveText}>LIVE</span>
+                  <span className={styles.cameraId}>CAM-03</span>
+                </div>
+                <div className={styles.monitorHeaderRight}>
+                  <span>ELKHORN CORAL STATION</span>
+                </div>
+              </div>
+              <div className={styles.videoWrapper}>
+                <iframe
+                  src="https://www.youtube.com/embed/lVlmfKf4y-0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&loop=1&playlist=lVlmfKf4y-0"
+                  title="Elkhorn Coral Live Feed"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+                <div className={styles.videoOverlay}>
+                  <div className={styles.overlayCorner + ' ' + styles.topLeft}></div>
+                  <div className={styles.overlayCorner + ' ' + styles.topRight}></div>
+                  <div className={styles.overlayCorner + ' ' + styles.bottomLeft}></div>
+                  <div className={styles.overlayCorner + ' ' + styles.bottomRight}></div>
+                </div>
+              </div>
+              <div className={styles.monitorFooter}>
+                <div className={styles.monitorStats}>
+                  <span>DEPTH: 5m</span>
+                  <span>TEMP: 25.8°C</span>
+                </div>
+                <div className={styles.monitorLocation}>
+                  <span>Florida Keys, USA</span>
+                </div>
+              </div>
             </div>
-            <div className={styles.monitorLocation}>
-              <span>Great Barrier Reef, Australia</span>
+            <div className={styles.healthPanel}>
+              <div className={styles.healthHeader}>
+                <h3>Elkhorn Coral (Acropora palmata)</h3>
+                <span className={styles.healthBadge + ' ' + styles.critical}>Critical</span>
+              </div>
+              <div className={styles.healthStats}>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Health Score</span>
+                  <span className={styles.healthValue} style={{ color: '#ef4444' }}>38</span>
+                </div>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Population</span>
+                  <span className={styles.healthValue}>320</span>
+                </div>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Growth Rate</span>
+                  <span className={styles.healthValue}>-2.4%</span>
+                </div>
+                <div className={styles.healthStat}>
+                  <span className={styles.healthLabel}>Fish Activity</span>
+                  <span className={styles.healthValue}>Low</span>
+                </div>
+              </div>
+              <div className={styles.healthTrend}>
+                <span>24h Trend: </span>
+                <span style={{ color: '#ef4444' }}>↓ Bleaching detected</span>
+              </div>
             </div>
           </div>
         </div>
