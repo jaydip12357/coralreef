@@ -1,0 +1,78 @@
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.small {
+  width: 80px;
+  height: 80px;
+}
+
+.medium {
+  width: 140px;
+  height: 140px;
+}
+
+.large {
+  width: 200px;
+  height: 200px;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(0deg);
+}
+
+.background {
+  stroke: var(--gray-200);
+}
+
+.progress {
+  transition: stroke-dashoffset 0.5s ease-in-out;
+}
+
+.content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score {
+  font-weight: 700;
+  line-height: 1;
+}
+
+.small .score {
+  font-size: 1.25rem;
+}
+
+.medium .score {
+  font-size: 2.25rem;
+}
+
+.large .score {
+  font-size: 3.5rem;
+}
+
+.label {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.small .label {
+  font-size: 0.625rem;
+}
+
+.medium .label {
+  font-size: 0.75rem;
+}
+
+.large .label {
+  font-size: 0.875rem;
+}

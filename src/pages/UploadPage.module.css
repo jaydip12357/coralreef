@@ -1,0 +1,10 @@
+.page {
+  flex: 1;
+  padding: 2rem 1.5rem;
+  background-color: var(--gray-50);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}

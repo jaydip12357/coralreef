@@ -1,0 +1,243 @@
+/* ReefWatch AI - Duke Theme */
+:root {
+  /* Duke Colors */
+  --duke-blue: #012169;
+  --duke-blue-dark: #001040;
+  --duke-blue-light: #003399;
+  --accent-teal: #339898;
+  --accent-teal-light: #4db8b8;
+  --accent-teal-dark: #267373;
+
+  /* Health Status Colors */
+  --health-good: #22c55e;
+  --health-warning: #eab308;
+  --health-critical: #ef4444;
+
+  /* Neutrals */
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  /* Typography */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: var(--gray-900);
+  background-color: var(--gray-50);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  font-weight: 500;
+  color: var(--accent-teal);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-teal-dark);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--duke-blue);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--duke-blue);
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  line-height: 1.4;
+}
+
+button {
+  border-radius: 8px;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  background-color: var(--duke-blue);
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--duke-blue-light);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid var(--accent-teal);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  background-color: var(--gray-300);
+  color: var(--gray-500);
+  cursor: not-allowed;
+  transform: none;
+}
+
+button.secondary {
+  background-color: var(--white);
+  color: var(--duke-blue);
+  border: 2px solid var(--duke-blue);
+}
+
+button.secondary:hover {
+  background-color: var(--gray-50);
+}
+
+button.accent {
+  background-color: var(--accent-teal);
+}
+
+button.accent:hover {
+  background-color: var(--accent-teal-dark);
+}
+
+input, select, textarea {
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 0 3px rgba(51, 152, 152, 0.2);
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+}
+
+.card-hover:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Health Score Badge Colors */
+.health-good {
+  background-color: var(--health-good);
+  color: var(--white);
+}
+
+.health-warning {
+  background-color: var(--health-warning);
+  color: var(--gray-900);
+}
+
+.health-critical {
+  background-color: var(--health-critical);
+  color: var(--white);
+}
+
+/* Leaflet Map Overrides */
+.leaflet-container {
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.leaflet-popup-content {
+  margin: 0.75rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* Loading Spinner */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--gray-200);
+  border-top-color: var(--accent-teal);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
