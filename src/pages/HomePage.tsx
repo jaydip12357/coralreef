@@ -226,24 +226,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.futureFeatures}>
-        <h2>Coming Soon</h2>
-        <div className={styles.futureGrid}>
-          <div className={styles.futureCard}>
-            <span className={styles.futureBadge}>Future</span>
-            <h3>Multi-Camera Network</h3>
-            <p>Access live feeds from multiple reef locations worldwide.</p>
-          </div>
-          <div className={styles.futureCard}>
-            <span className={styles.futureBadge}>Future</span>
+      <section className={styles.toolsSection}>
+        <h2>Monitoring Tools</h2>
+        <div className={styles.toolsGrid}>
+          <Link to="/historical" className={styles.toolCard}>
+            <div className={styles.toolIcon}>📊</div>
             <h3>Historical Data Analysis</h3>
-            <p>Track reef health changes over time with comprehensive historical data.</p>
-          </div>
-          <div className={styles.futureCard}>
-            <span className={styles.futureBadge}>Future</span>
+            <p>Track reef health changes over time with comprehensive trend data and insights.</p>
+            <span className={styles.toolLink}>View Analysis →</span>
+          </Link>
+          <Link to="/alerts" className={styles.toolCard}>
+            <div className={styles.toolIcon}>🚨</div>
             <h3>Alert System</h3>
-            <p>Automated alerts for bleaching events, illegal fishing, and ecosystem changes.</p>
-          </div>
+            <p>Real-time alerts for bleaching events, illegal fishing, and ecosystem changes.</p>
+            <span className={styles.toolLink}>View Alerts →</span>
+          </Link>
+          <Link to="/dashboard" className={styles.toolCard}>
+            <div className={styles.toolIcon}>📈</div>
+            <h3>Dashboard</h3>
+            <p>Comprehensive overview of all monitored reefs, uploads, and system status.</p>
+            <span className={styles.toolLink}>Open Dashboard →</span>
+          </Link>
         </div>
       </section>
     </div>

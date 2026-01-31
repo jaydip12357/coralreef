@@ -4,6 +4,8 @@ import HomePage from './pages/HomePage';
 import UploadPage from './pages/UploadPage';
 import ResultsPage from './pages/ResultsPage';
 import DashboardPage from './pages/DashboardPage';
+import HistoricalPage from './pages/HistoricalPage';
+import AlertsPage from './pages/AlertsPage';
 import './App.css';
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
           <Route path="/upload" element={<UploadPage />} />
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/historical" element={<HistoricalPage />} />
+          <Route path="/alerts" element={<AlertsPage />} />
         </Routes>
       </div>
     </BrowserRouter>

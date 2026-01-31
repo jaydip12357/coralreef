@@ -458,17 +458,17 @@
   content: '📍';
 }
 
-.futureFeatures {
+.toolsSection {
   padding: 4rem 1.5rem;
   background: var(--gray-50);
 }
 
-.futureFeatures h2 {
+.toolsSection h2 {
   text-align: center;
   margin-bottom: 2.5rem;
 }
 
-.futureGrid {
+.toolsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
@@ -476,35 +476,44 @@
   margin: 0 auto;
 }
 
-.futureCard {
+.toolCard {
   background: white;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  position: relative;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: block;
 }
 
-.futureBadge {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  background: var(--duke-blue);
-  color: white;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
+.toolCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
 }
 
-.futureCard h3 {
+.toolIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.toolCard h3 {
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
+  color: var(--duke-blue);
 }
 
-.futureCard p {
+.toolCard p {
   font-size: 0.9375rem;
   color: var(--gray-600);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.toolLink {
+  display: inline-block;
+  color: var(--accent-teal);
+  font-weight: 600;
+  font-size: 0.875rem;
 }
 
 @media (max-width: 1024px) {
@@ -521,7 +530,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .futureGrid {
+  .toolsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -555,7 +564,7 @@
   }
 
   .featureGrid,
-  .futureGrid {
+  .toolsGrid {
     grid-template-columns: 1fr;
   }
 }
