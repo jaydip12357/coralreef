@@ -24,6 +24,9 @@ export interface AnalysisResult {
   trend: 'improving' | 'stable' | 'declining';
   summary: string;
   timestamp: string;
+  totalFishCount?: number;
+  confidence?: number;
+  analyzedFrame?: string; // Base64 of the frame that was analyzed (for videos)
 }
 
 export interface UploadRecord {

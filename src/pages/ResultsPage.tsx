@@ -92,6 +92,18 @@ export default function ResultsPage() {
                   {getTrendIcon(result.trend)} {result.trend}
                 </span>
               </div>
+              {result.totalFishCount !== undefined && (
+                <div className={styles.detailItem}>
+                  <span className={styles.detailLabel}>Total Fish</span>
+                  <span className={styles.detailValue}>{result.totalFishCount}</span>
+                </div>
+              )}
+              {result.confidence !== undefined && (
+                <div className={styles.detailItem}>
+                  <span className={styles.detailLabel}>Confidence</span>
+                  <span className={styles.detailValue}>{result.confidence}%</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -100,6 +112,16 @@ export default function ResultsPage() {
             <p>{result.summary}</p>
           </div>
         </div>
+
+        {result.analyzedFrame && (
+          <div className={styles.analyzedFrameSection}>
+            <h2>Analyzed Frame</h2>
+            <p className={styles.frameHint}>This frame was selected as having the most fish visible</p>
+            <div className={styles.frameContainer}>
+              <img src={result.analyzedFrame} alt="Analyzed frame" className={styles.analyzedFrame} />
+            </div>
+          </div>
+        )}
 
         <div className={styles.speciesSection}>
           <h2>Species Breakdown</h2>
